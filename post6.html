@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 1: Harapan dari Mata Kuliah Basis Data</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 6: Apa itu Attribute, Entitas dan Relasi dalam ERD</h1>
+    <div class="date">Dipublikasikan: 05 Oktober 2025</div>
+    <img src="https://landing.moqups.com/img/_optimized/templates/diagrams/erd/database-diagram-w1366.avif" alt="Ilustrasi Basis Data" class="post-img">
+
+   <h1>Post 6: Entitas, Atribut, dan Relasi dalam ERD</h1>
+
+    <h2>1. Entitas</h2>
+    <p>
+      Entitas adalah objek atau sesuatu yang bisa dikenali dan memiliki data yang akan disimpan dalam database.
+      Entitas bisa berupa orang, benda, tempat, peristiwa, atau konsep.
+    </p>
+
+    <p><strong>Contoh entitas dalam sistem kampus:</strong></p>
+    <ul>
+      <li>Mahasiswa</li>
+      <li>Dosen</li>
+      <li>Mata Kuliah</li>
+      <li>Ruangan</li>
+    </ul>
+
+    <p>Setiap entitas nantinya akan dibuat menjadi tabel dalam database.</p>
+
+    <hr>
+
+    <h2>2. Atribut</h2>
+    <p>
+      Atribut adalah karakteristik atau informasi yang dimiliki oleh suatu entitas.
+      Setiap entitas pasti punya atribut untuk mendeskripsikannya.
+    </p>
+
+    <p><strong>Contoh atribut untuk entitas Mahasiswa:</strong></p>
+    <ul>
+      <li>NIM</li>
+      <li>Nama</li>
+      <li>Tanggal Lahir</li>
+      <li>Jurusan</li>
+      <li>Alamat</li>
+    </ul>
+
+    <p>Dalam database, atribut menjadi kolom dari tabel.</p>
+
+    <hr>
+
+    <h2>3. Relasi</h2>
+    <p>
+      Relasi (relationship) adalah hubungan antar entitas. Relasi menunjukkan bagaimana satu entitas terhubung dengan entitas lainnya.
+    </p>
+
+    <p><strong>Contoh relasi dalam sistem akademik:</strong></p>
+    <ul>
+      <li>Mahasiswa mengambil Mata Kuliah</li>
+      <li>Dosen mengajar Mata Kuliah</li>
+      <li>Mahasiswa dibimbing oleh Dosen</li>
+    </ul>
+
+    <p><strong>Relasi bisa berbentuk:</strong></p>
+    <ul>
+      <li>One to One (1:1)</li>
+      <li>One to Many (1:N)</li>
+      <li>Many to Many (M:N)</li>
+    </ul>
+
+    <p>
+      Dalam database, relasi biasanya diwujudkan dengan <em>foreign key</em> atau tabel penghubung.
+    </p>
+  </div>
+</body>
+</html>

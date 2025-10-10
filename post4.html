@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 1: Harapan dari Mata Kuliah Basis Data</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 4: Apa itu Physical Model</h1>
+    <div class="date">Dipublikasikan: 28 September 2025</div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCUuDTFRSVowNfoJW-3xPogU3sji97klyNK6Z-rRffb5BFMSgAR5wz9KoZSKvpwqlhlBE&usqp=CAU" alt="Basis Data" class="post-img">
+
+    <p>Apa itu Physical Model?</p>
+    <p>Physical model adalah tahap perancangan basis data yang berfokus pada bagaimana data benar-benar disimpan di dalam sistem database (DBMS). Jika conceptual dan logical model masih membahas data secara abstrak atau logis, physical model sudah masuk ke aspek teknis implementasi.</p>
+    <p>Beberapa hal yang biasanya dijelaskan dalam physical model antara lain:</p>
+    <ul>
+      <li>Nama tabel yang spesifik sesuai DBMS yang digunakan</li>
+      <li>Tipe data yang tepat untuk setiap kolom (misalnya INT, VARCHAR, DATE, dll.)</li>
+      <li>Panjang field atau batas karakter</li>
+      <li>Penentuan primary key, foreign key, indeks, dan constraint</li>
+      <li>Pembagian storage atau partisi jika diperlukan</li>
+    </ul>
+    <p>Physical model juga memperhatikan performa, keamanan, dan efisiensi penyimpanan. Misalnya, memilih tipe data terkecil yang sesuai agar penyimpanan tidak boros, atau menambahkan indeks agar pencarian data lebih cepat. Singkatnya, physical model adalah rancangan akhir yang siap dieksekusi oleh DBMS untuk membentuk struktur basis data secara nyata. Ini adalah tahap paling konkret dari seluruh proses desain database.</p>
+  </div>
+</body>
+</html>

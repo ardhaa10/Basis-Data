@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 5: Installasi MySQL</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .video {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video iframe {
+      width: 100%;
+      max-width: 700px;
+      height: 400px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    ul, ol {
+      margin-left: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 5: Installasi MySQL</h1>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Pr8CawjDFbU" 
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div> <!-- ✅ Tambahkan penutup div di sini -->
+
+    <h2>Apa Itu MySQL?</h2>
+    <p>
+      MySQL adalah sistem manajemen basis data relasional (RDBMS) yang menggunakan bahasa SQL 
+      (<em>Structured Query Language</em>). MySQL banyak digunakan untuk aplikasi web, sistem informasi, 
+      hingga platform besar karena:
+    </p>
+
+    <ul>
+      <li>Gratis dan open-source</li>
+      <li>Cepat dan stabil</li>
+      <li>Mendukung banyak bahasa pemrograman</li>
+      <li>Bisa berjalan di Windows, Linux, dan macOS</li>
+      <li>Banyak digunakan bersama PHP dan Apache (seperti pada XAMPP)</li>
+    </ul>
+
+    <p>
+      MySQL menyimpan data dalam bentuk tabel dan memungkinkan pengguna melakukan operasi seperti menyimpan, 
+      mengubah, menghapus, dan mengambil data.
+    </p>
+
+    <hr>
+
+    <h2>Langkah-Langkah Instalasi MySQL di Windows</h2>
+
+    <ol>
+      <li><strong>Download Installer</strong>
+        <ul>
+          <li>Buka situs resmi: <a href="https://dev.mysql.com/downloads/installer/" target="_blank">https://dev.mysql.com/downloads/installer/</a></li>
+          <li>Pilih <em>MySQL Installer (Windows)</em>.</li>
+          <li>Unduh versi <em>MySQL Installer Full</em> agar lengkap.</li>
+        </ul>
+      </li>
+
+      <li><strong>Jalankan Installer</strong>
+        <ul>
+          <li>Klik dua kali file <code>.msi</code> yang sudah diunduh.</li>
+          <li>Pilih opsi instalasi: <em>Developer Default</em> (direkomendasikan) atau <em>Server only</em> jika hanya butuh database.</li>
+        </ul>
+      </li>
+
+      <li><strong>Pilih Komponen</strong>
+        <ul>
+          <li>MySQL Server</li>
+          <li>MySQL Workbench</li>
+          <li>MySQL Shell</li>
+          <li>Connector (jika dibutuhkan)</li>
+        </ul>
+      </li>
+
+      <li><strong>Proses Instalasi</strong>
+        <ul>
+          <li>Klik <strong>Execute</strong> atau <strong>Install</strong> untuk memulai proses pengunduhan dan pemasangan.</li>
+        </ul>
+      </li>
+
+      <li><strong>Konfigurasi Server</strong>
+        <ul>
+          <li>Pilih tipe konfigurasi: <em>Standalone</em></li>
+          <li>Pilih port default: <code>3306</code></li>
+          <li>Pilih mode autentikasi: <em>Use Strong Password Encryption</em></li>
+        </ul>
+      </li>
+
+      <li><strong>Buat Password</strong>
+        <ul>
+          <li>Buat password untuk user <code>root</code>.</li>
+          <li>Opsi untuk menambah user lain (bisa dilewati dulu).</li>
+        </ul>
+      </li>
+
+      <li><strong>Selesaikan Setup</strong>
+        <ul>
+          <li>Klik <strong>Apply</strong> dan tunggu proses konfigurasi selesai.</li>
+          <li>Klik <strong>Finish</strong>.</li>
+        </ul>
+      </li>
+
+      <li><strong>Coba Jalankan</strong>
+        <ul>
+          <li>Gunakan MySQL Workbench dan login dengan:</li>
+          <li><strong>User:</strong> root</li>
+          <li><strong>Password:</strong> (yang sudah dibuat sebelumnya)</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</body>
+</html>
