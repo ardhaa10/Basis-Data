@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 8: Relasi dalam ERD</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    h3, h4 {
+      color: #6018DC;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    table, th, td {
+      border: 1px solid #999;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #f0e9ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 8: Relasi dalam ERD</h1>
+    <div class="date">Dipublikasikan: 12 Oktober 2025</div>
+
+    <p>
+      Relasi dalam ERD merupakan hubungan antara dua atau lebih entitas yang menjelaskan bagaimana data saling terhubung dalam sebuah sistem. Relasi ini memastikan aliran informasi antar tabel berjalan konsisten dan terstruktur dalam implementasi database.
+    </p>
+
+    <h3>Jenis-Jenis Relasi ERD</h3>
+    <p><strong>1. One-to-One (1:1)</strong><br>
+    Relasi di mana satu entitas hanya berhubungan dengan satu entitas lainnya secara eksklusif.</p>
+    <p><strong>[Entitas A] ────||──── [Entitas B]</strong>
+    </p>
+
+    <p><strong>Contoh Relasi One-to-One</strong></p> 
+    <p>Contoh: Setiap pasien memiliki satu rekam medis khusus.</p>
+
+    <img src="images/one to one.png" alt="SQL One-to-One" style="width:50%;">
+
+
+    <h4>Tabel Pasien</h4>
+    <table>
+      <tr>
+        <th>id_pasien</th>
+        <th>nama_pasien</th>
+      </tr>
+      <tr><td>1</td><td>Andi Pratama</td></tr>
+      <tr><td>2</td><td>Siti Aminah</td></tr>
+    </table>
+
+    <h4>Tabel RekamMedis</h4>
+    <table>
+      <tr>
+        <th>id_rekam</th>
+        <th>tanggal</th>
+        <th>id_pasien</th>
+      </tr>
+      <tr><td>101</td><td>2025-09-01</td><td>1</td></tr>
+      <tr><td>102</td><td>2025-09-02</td><td>2</td></tr>
+    </table>
+    <p>Dalam contoh di atas, setiap pasien hanya memiliki satu rekam medis yang terkait langsung melalui kolom <code>id_pasien</code> di tabel <code>RekamMedis</code>.</p><br>
+
+
+    <p><strong>2. One-to-Many (1:N)</strong><br>
+    Satu entitas dapat berhubungan dengan banyak entitas lain, tetapi entitas yang banyak hanya terhubung ke satu entitas utama.</p>
+    <p><strong>[Entitas A] ────||────< [Entitas B]</strong>
+    </p>
+
+    <p><strong>Contoh Relasi One-to-Many</strong></p>
+    <p>Contoh: Satu guru mengajar banyak kelas.</p>
+    <img src="images/one to many.png" alt="SQL One-to-many" style="width:50%;">
+
+
+    <h4>Tabel Guru</h4>
+    <table>
+      <tr>
+        <th>id_guru</th>
+        <th>nama_guru</th>
+      </tr>
+      <tr><td>1</td><td>Pak Andi</td></tr>
+      <tr><td>2</td><td>Bu Rina</td></tr>
+    </table>
+
+    <h4>Tabel Kelas</h4>
+    <table>
+      <tr>
+        <th>id_kelas</th>
+        <th>nama_kelas</th>
+        <th>id_guru</th>
+      </tr>
+      <tr><td>1</td><td>X IPA 1</td><td>1</td></tr>
+      <tr><td>2</td><td>X IPA 2</td><td>1</td></tr>
+      <tr><td>3</td><td>XI IPA 1</td><td>2</td></tr>
+    </table>
+    <p>Dalam contoh di atas, satu guru (misalnya Pak Andi) dapat mengajar banyak kelas, tetapi setiap kelas hanya diajar oleh satu guru tertentu.</p><br>
+
+
+    <p><strong>3. Many-to-Many (M:N)</strong><br>
+    Dua entitas dapat saling berhubungan secara banyak. Namun jenis ini harus diubah menjadi dua relasi one-to-many melalui tabel penghubung agar lebih mudah diimplementasikan.</p>
+    <p>Mengapa Many to Many tidak baik digunakan pada ERD?</p>
+    <ul>
+        <li>❌Tidak bisa diterapkan langsung dalam tabel relasional</li>
+        <li>❌Menyebabkan duplikasi dan kerancuan data</li>
+        <li>❌Menyulitkan integritas referensial</li>
+        <li>❌Sulit dipakai untuk query SQL</li>
+    </ul>
+    <p>Solusinya? Gunakan Junction Table</p>
+    <ul>
+        <li>✅Memecah relasi many-to-many menjadi dua relasi one-to-many</li>
+        <li>✅Mempermudah implementasi dalam database relasional</li>
+        <li>✅Menjaga integritas data dan menghindari duplikasi</li>
+        <li>✅Memudahkan pembuatan query SQL</li>
+    </ul>
+
+    <p><strong>Contoh Relasi Many-to-Many</strong></p>
+    <p>Contoh: Siswa dapat mengikuti banyak ekstrakurikuler, dan satu ekstrakurikuler bisa diikuti banyak siswa.</p>
+    <p><strong>[Entitas A] >────< [Entitas B]</strong>
+    </p>
+    <p>Karena many-to-many tidak dipakai langsung, kita buat tabel penghubung (junction table) yang mengandung foreign key dari kedua entitas:</p>
+    <p><strong>[Entitas A] ───< [Tabel Penghubung] >─── [Entitas B]</strong>
+    </p><br>
+
+    <img src="images/many to many.png" alt="SQL many-to-many" style="width:50%;">
+
+
+
+    <h4>Tabel Siswa</h4>
+    <table>
+      <tr>
+        <th>id_siswa</th>
+        <th>nama_siswa</th>
+      </tr>
+      <tr><td>1</td><td>Alif Nugraha</td></tr>
+      <tr><td>2</td><td>Dina Putri</td></tr>
+    </table>
+
+    <h4>Tabel Ekstrakurikuler</h4>
+    <table>
+      <tr>
+        <th>id_ekskul</th>
+        <th>nama_ekskul</th>
+      </tr>
+      <tr><td>1</td><td>Pramuka</td></tr>
+      <tr><td>2</td><td>Basket</td></tr>
+    </table>
+
+    <h4>Tabel Siswa_Ekskul (Junction Table)</h4>
+    <table>
+      <tr>
+        <th>id_siswa</th>
+        <th>id_ekskul</th>
+      </tr>
+      <tr><td>1</td><td>1</td></tr>
+      <tr><td>1</td><td>2</td></tr>
+      <tr><td>2</td><td>1</td></tr>
+    </table>
+    <p>Dalam contoh di atas, tabel <code>Siswa_Ekskul</code> menghubungkan siswa dengan ekstrakurikuler yang mereka ikuti, memungkinkan relasi many-to-many dipecah menjadi dua relasi one-to-many.</p>
+
+    <h3>Kesimpulan</h3>
+    <p>
+      Relasi dalam ERD digunakan untuk menjelaskan hubungan antar entitas dalam sistem basis data. Relasi one-to-one menunjukkan keterhubungan eksklusif, one-to-many menggambarkan satu entitas utama yang berhubungan dengan banyak entitas lain, sedangkan many-to-many harus dipecah menggunakan tabel penghubung agar lebih mudah diterapkan dalam database relasional. Dengan struktur relasi yang tepat, penyimpanan data menjadi lebih rapi, terhindar dari duplikasi, dan integritas data dapat terjaga.
+    </p>
+  </div>
+</body>
+</html>
