@@ -146,14 +146,14 @@
       Toko menjual berbagai produk kepada pelanggan, dan setiap transaksi dicatat oleh kasir.
     </p>
 
-    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>🔑 Keys:</strong></p>
     <p><strong>Primary Key:</strong><br>
     produk: id_produk, pelanggan: id_pelanggan, transaksi: id_transaksi
     </p>
     <p><strong>Foreign Key:</strong><br>
-      Transaksi: id_pelanggan ΓåÆ Pelanggan: id_pelanggan<br>
-      DetailTransaksi: id_transaksi ΓåÆ Transaksi: id_transaksi<br>
-      DetailTransaksi: id_produk ΓåÆ Produk: id_produk
+      Transaksi: id_pelanggan → Pelanggan: id_pelanggan<br>
+      DetailTransaksi: id_transaksi → Transaksi: id_transaksi<br>
+      DetailTransaksi: id_produk → Produk: id_produk
     </p>
     <p><strong>Candidate Key:</strong><br>
       Produk: kode_produk, Pelanggan: email, Transaksi: no_invoice
@@ -229,13 +229,13 @@
       Pabrik memproduksi barang dengan bahan baku dari supplier, dikelola oleh karyawan bagian produksi.
     </p>
 
-    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>🔑 Keys:</strong></p>
     <p><strong>Primary Key:</strong><br>
       Produk: id_produk, Supplier: id_supplier, Produksi: id_produksi
     </p>
     <p><strong>Foreign Key:</strong><br>
-      Produk: id_produk, Supplier: id_supplier, Produksi: id_produksi<br>
-      Produksi: id_supplier ΓåÆ Supplier: id_supplier
+      Produksi: id_produk → Produk: id_produk<br>
+      Produksi: id_supplier → Supplier: id_supplier
     </p>
     <p><strong>Candidate Key:</strong><br>
       Produk: kode_produk, Supplier: npwp, Produksi: no_batch
@@ -299,14 +299,14 @@
       Sekolah memiliki siswa, guru, dan kelas yang saling berhubungan.
     </p>
 
-    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>🔑 Keys:</strong></p>
     <p><strong>Primary Key:</strong><br>
       Siswa: nis, Guru: id_guru, Kelas: id_kelas
     </p>
     <p><strong>Foreign Key:</strong><br>
-      Kelas: id_guru ΓåÆ Guru: id_guru<br>
-      Nilai: nis ΓåÆ Siswa: nis<br>
-      Nilai: id_kelas ΓåÆ Kelas: id_kelas
+      Kelas: id_guru → Guru: id_guru<br>
+      Nilai: nis → Siswa: nis<br>
+      Nilai: id_kelas → Kelas: id_kelas
     </p>
     <p><strong>Candidate Key:</strong><br>
       Guru: email, Siswa: email, Kelas: kode_kelas
@@ -385,13 +385,13 @@
      Rumah sakit memiliki dokter, pasien, dan catatan pemeriksaan
     </p>
 
-    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>🔑 Keys:</strong></p>
     <p><strong>Primary Key:</strong><br>
       Dokter: id_dokter, Pasien: id_pasien, RekamMedis: id_rekam
     </p>
     <p><strong>Foreign Key:</strong><br>
-      RekamMedis: id_dokter ΓåÆ Dokter: id_dokter<br>
-      RekamMedis: id_pasien ΓåÆ Pasien: id_pasien
+      RekamMedis: id_dokter → Dokter: id_dokter<br>
+      RekamMedis: id_pasien → Pasien: id_pasien
     </p>
     <p><strong>Candidate Key:</strong><br>
       Dokter: no_str, Pasien: no_ktp, RekamMedis: no_rm
@@ -454,13 +454,13 @@
       Perpustakaan memiliki koleksi buku, anggota, dan data peminjaman buku.
     </p>
 
-    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>🔑 Keys:</strong></p>
     <p><strong>Primary Key:</strong><br>
       Buku: id_buku, Anggota: id_anggota, Peminjaman: id_pinjam
     </p>
     <p><strong>Foreign Key:</strong><br>
-      Peminjaman: id_buku ΓåÆ Buku: id_buku<br>
-      Peminjaman: id_anggota ΓåÆ Anggota: id_anggota
+      Peminjaman: id_buku → Buku: id_buku<br>
+      Peminjaman: id_anggota → Anggota: id_anggota
     </p>
     <p><strong>Candidate Key:</strong><br>
       Buku: isbn, Anggota: email, Peminjaman: kode_pinjam
@@ -526,3 +526,4 @@
   </div>
 </body>
 </html>
+
