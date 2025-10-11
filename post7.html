@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 1: Harapan dari Mata Kuliah Basis Data</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #6018DC;
+
+    }
+
+    h4 {
+      margin-top: 40px;
+      color: #6018DC;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background: #6018DC;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 7: Primary Key, Foreign Key, dan Candidate Key</h1>
+    <div class="date">Dipublikasikan: 10 Oktober 2025</div>
+    
+    <p><strong>1. Primary Key</strong></p>
+    <p>
+     Primary Key adalah atribut atau kombinasi atribut yang berfungsi
+     sebagai pengenal unik setiap baris data dalam tabel. Artinya, tidak boleh ada dua
+     baris yang memiliki nilai Primary Key yang sama, dan nilai ini tidak boleh kosong
+     (NULL). Misalnya, pada tabel mahasiswa, kolom nim dapat
+     dijadikan Primary Key karena setiap mahasiswa memiliki nomor induk yang unik.
+    </p>
+
+    <p><strong>Keunikan / karakteristik Primary Key:</strong></p>
+    <ul>
+        <li>Nilainya unik untuk setiap record.</li>
+        <li>Tidak boleh <code>NULL</code>.</li>
+        <li>Hanya boleh ada satu Primary Key dalam satu tabel.</li>
+        <li>Biasanya digunakan sebagai acuan untuk membangun hubungan antar tabel.</li>
+    </ul>
+
+    <p><strong>2. Foreign Key</strong></p>
+    <p>
+    Foreign Key adalah atribut yang digunakan untuk menghubungkan satu tabel
+    dengan tabel lain. Foreign Key mengambil nilai dari Primary Key di tabel lain agar hubungan
+    antar data tetap konsisten. Tujuannya adalah menjaga integritas referensial dalam database.
+    </p>
+
+    <p><strong>Keunikan / Karakteristik Foreign Key:</strong></p>
+    <ul>
+        <li>Nilainya boleh sama antar record (tidak harus unik).</li>
+        <li>Bisa bernilai <code>NULL</code> (jika tidak ada relasi).</li>
+        <li>Harus merujuk ke nilai yang ada pada Primary Key atau Candidate Key tabel lain.</li>
+        <li>Digunakan untuk membuat relasi antar tabel.</li>
+    </ul>
+
+    <p><strong>3. Candidate Key</strong></p> 
+    <p>
+    Candidate Key adalah atribut atau kombinasi atribut yang berpotensi
+    menjadi Primary Key karena memiliki nilai yang unik dan tidak bernilai <code>NULL</code>.
+    Dalam satu tabel bisa terdapat lebih dari satu Candidate Key, namun hanya satu yang
+    akan dipilih sebagai Primary Key.
+    </p>
+
+    <p><strong>Contoh Candidate Key:</strong></p>
+    <ul>
+        <li>Tidak Ada Duplikasi Nilai.</li>
+        <li>Nilainya Harus Stabil & Konsisten.</li>
+        <li>Satu di antaranya akan ditetapkan sebagai Primary Key.</li>
+        <li>Minimal (Tidak Boleh Berlebihan).</li>
+    </ul>
+    <h2>Contoh Implementasi dalam Sistem Basis Data:</h2>
+<div class="examples">
+
+  <div class="example-box">
+    <h2>1. Sistem Penjualan Toko</h2>
+    <p><strong>Deskripsi:</strong><br>
+      Toko menjual berbagai produk kepada pelanggan, dan setiap transaksi dicatat oleh kasir.
+    </p>
+
+    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>Primary Key:</strong><br>
+    produk: id_produk, pelanggan: id_pelanggan, transaksi: id_transaksi
+    </p>
+    <p><strong>Foreign Key:</strong><br>
+      Transaksi: id_pelanggan ΓåÆ Pelanggan: id_pelanggan<br>
+      DetailTransaksi: id_transaksi ΓåÆ Transaksi: id_transaksi<br>
+      DetailTransaksi: id_produk ΓåÆ Produk: id_produk
+    </p>
+    <p><strong>Candidate Key:</strong><br>
+      Produk: kode_produk, Pelanggan: email, Transaksi: no_invoice
+    </p>
+    <p><strong>SQL Code:</strong></p> 
+    <img src="images/sistem penjualan toko.png"
+     alt="SQL Code Sistem Penjualan Toko"
+     style="width:50%;">
+  </div>
+
+  <h4>Tabel Produk</h4>
+  <table>
+    <tr>
+      <th>id_produk</th>
+      <th>kode_produk</th>
+      <th>nama_produk</th>
+      <th>harga</th>
+    </tr>
+    <tr><td>1</td><td>PRD001</td><td>Laptop ASUS VivoBook</td><td>8.500.000</td></tr>
+    <tr><td>2</td><td>PRD002</td><td>Mouse Logitech</td><td>150.000</td></tr>
+    <tr><td>3</td><td>PRD003</td><td>Keyboard Rexus</td><td>250.000</td></tr>
+    <tr><td>4</td><td>PRD004</td><td>Monitor Samsung 24"</td><td>1.700.000</td></tr>
+    <tr><td>5</td><td>PRD005</td><td>Flashdisk Sandisk 64GB</td><td>120.000</td></tr>
+  </table>
+
+  <h4>Tabel Pelanggan</h4>
+  <table>
+    <tr>
+      <th>id_pelanggan</th>
+      <th>email</th>
+      <th>nama_pelanggan</th>
+    </tr>
+    <tr><td>1</td><td>rani@gmail.com</td><td>Rani Putri</td></tr>
+    <tr><td>2</td><td>adi@yahoo.com</td><td>Adi Nugraha</td></tr>
+    <tr><td>3</td><td>budi@outlook.com</td><td>Budi Santoso</td></tr>
+    <tr><td>4</td><td>siti@gmail.com</td><td>Siti Aminah</td></tr>
+    <tr><td>5</td><td>joko@gmail.com</td><td>Joko Prasetyo</td></tr>
+  </table>
+
+  <h4>Tabel Transaksi</h4>
+  <table>
+    <tr>
+      <th>id_transaksi</th>
+      <th>no_invoice</th>
+      <th>tanggal</th>
+      <th>id_pelanggan</th>
+    </tr>
+    <tr><td>1</td><td>INV001</td><td>2025-10-01</td><td>1</td></tr>
+    <tr><td>2</td><td>INV002</td><td>2025-10-02</td><td>3</td></tr>
+    <tr><td>3</td><td>INV003</td><td>2025-10-03</td><td>2</td></tr>
+    <tr><td>4</td><td>INV004</td><td>2025-10-04</td><td>4</td></tr>
+    <tr><td>5</td><td>INV005</td><td>2025-10-05</td><td>5</td></tr>
+  </table>
+
+  <h4>Tabel Detail Transaksi</h4>
+  <table>
+    <tr>
+      <th>id_detail</th>
+      <th>id_transaksi</th>
+      <th>id_produk</th>
+      <th>jumlah</th>
+    </tr>
+    <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+    <tr><td>3</td><td>3</td><td>3</td><td>1</td></tr>
+    <tr><td>4</td><td>4</td><td>4</td><td>1</td></tr>
+    <tr><td>5</td><td>5</td><td>5</td><td>3</td></tr>
+  </table>
+
+  <div class="example-box">
+    <h2>2. Sistem Produksi Pabrik</h2>
+    <p><strong>Deskripsi:</strong><br>
+      Pabrik memproduksi barang dengan bahan baku dari supplier, dikelola oleh karyawan bagian produksi.
+    </p>
+
+    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>Primary Key:</strong><br>
+      Produk: id_produk, Supplier: id_supplier, Produksi: id_produksi
+    </p>
+    <p><strong>Foreign Key:</strong><br>
+      Produk: id_produk, Supplier: id_supplier, Produksi: id_produksi<br>
+      Produksi: id_supplier ΓåÆ Supplier: id_supplier
+    </p>
+    <p><strong>Candidate Key:</strong><br>
+      Produk: kode_produk, Supplier: npwp, Produksi: no_batch
+    </p>
+    <p><strong>SQL Code:</strong></p>
+    <img src="images/sistem produksi.png"
+     alt="SQL Code Sistem produksi"
+     style="width:50%;">
+
+  </div>
+
+  <h4>Tabel Produk</h4>
+<table>
+  <tr>
+    <th>id_produk (PK)</th>
+    <th>kode_produk (UNIQUE)</th>
+    <th>nama_produk</th>
+  </tr>
+  <tr><td>1</td><td>P01</td><td>Botol Plastik</td></tr>
+  <tr><td>2</td><td>P02</td><td>Karton Box</td></tr>
+  <tr><td>3</td><td>P03</td><td>Sabun Cair</td></tr>
+  <tr><td>4</td><td>P04</td><td>Minyak Goreng</td></tr>
+  <tr><td>5</td><td>P05</td><td>Tisu Basah</td></tr>
+</table>
+<br>
+
+<h4>Tabel Supplier</h4>
+<table>
+  <tr>
+    <th>id_supplier (PK)</th>
+    <th>npwp (UNIQUE)</th>
+    <th>nama_supplier</th>
+  </tr>
+  <tr><td>1</td><td>NPWP001</td><td>CV Sumber Plastik</td></tr>
+  <tr><td>2</td><td>NPWP002</td><td>PT Kemasindo</td></tr>
+  <tr><td>3</td><td>NPWP003</td><td>UD Sinar Makmur</td></tr>
+  <tr><td>4</td><td>NPWP004</td><td>PT Bumi Indah</td></tr>
+  <tr><td>5</td><td>NPWP005</td><td>CV Mega Jaya</td></tr>
+</table>
+<br>
+
+<h4>Tabel Produksi</h4>
+<table>
+  <tr>
+    <th>id_produksi (PK)</th>
+    <th>no_batch (UNIQUE)</th>
+    <th>tanggal</th>
+    <th>id_produk (FK)</th>
+    <th>id_supplier (FK)</th>
+  </tr>
+  <tr><td>1</td><td>BATCH001</td><td>2025-09-01</td><td>1</td><td>1</td></tr>
+  <tr><td>2</td><td>BATCH002</td><td>2025-09-03</td><td>3</td><td>3</td></tr>
+  <tr><td>3</td><td>BATCH003</td><td>2025-09-05</td><td>4</td><td>4</td></tr>
+  <tr><td>4</td><td>BATCH004</td><td>2025-09-07</td><td>5</td><td>5</td></tr>
+  <tr><td>5</td><td>BATCH005</td><td>2025-09-09</td><td>2</td><td>2</td></tr>
+</table>
+
+  <div class="example-box">
+    <h4>3. Sistem Akademik Sekolah</h4>
+    <p><strong>Deskripsi:</strong><br>
+      Sekolah memiliki siswa, guru, dan kelas yang saling berhubungan.
+    </p>
+
+    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>Primary Key:</strong><br>
+      Siswa: nis, Guru: id_guru, Kelas: id_kelas
+    </p>
+    <p><strong>Foreign Key:</strong><br>
+      Kelas: id_guru ΓåÆ Guru: id_guru<br>
+      Nilai: nis ΓåÆ Siswa: nis<br>
+      Nilai: id_kelas ΓåÆ Kelas: id_kelas
+    </p>
+    <p><strong>Candidate Key:</strong><br>
+      Guru: email, Siswa: email, Kelas: kode_kelas
+    </p>
+    <p><strong>SQL Code:</strong></p>
+    <img src="images/sistem akademik.png"
+     alt="SQL Code Sistem akademik"
+     style="width:50%;">
+
+  </div>
+
+  <h4>Tabel Guru</h4>
+<table>
+  <tr>
+    <th>id_guru (PK)</th>
+    <th>email (UNIQUE)</th>
+    <th>nama_guru</th>
+  </tr>
+  <tr><td>1</td><td>guru1@sekolah.id</td><td>Pak Andi</td></tr>
+  <tr><td>2</td><td>guru2@sekolah.id</td><td>Bu Rina</td></tr>
+  <tr><td>3</td><td>guru3@sekolah.id</td><td>Pak Deni</td></tr>
+  <tr><td>4</td><td>guru4@sekolah.id</td><td>Bu Sari</td></tr>
+  <tr><td>5</td><td>guru5@sekolah.id</td><td>Pak Agus</td></tr>
+</table>
+<br>
+
+<h4>Tabel Siswa</h4>
+<table>
+  <tr>
+    <th>nis (PK)</th>
+    <th>email (UNIQUE)</th>
+    <th>nama_siswa</th>
+  </tr>
+  <tr><td>S001</td><td>alif@student.id</td><td>Alif Nugraha</td></tr>
+  <tr><td>S002</td><td>dina@student.id</td><td>Dina Putri</td></tr>
+  <tr><td>S003</td><td>fajar@student.id</td><td>Fajar Pratama</td></tr>
+  <tr><td>S004</td><td>lina@student.id</td><td>Lina Rahma</td></tr>
+  <tr><td>S005</td><td>rudi@student.id</td><td>Rudi Hartono</td></tr>
+</table>
+<br>
+
+<h4>Tabel Kelas</h4>
+<table>
+  <tr>
+    <th>id_kelas (PK)</th>
+    <th>kode_kelas (UNIQUE)</th>
+    <th>nama_kelas</th>
+    <th>id_guru (FK)</th>
+  </tr>
+  <tr><td>1</td><td>XIPA1</td><td>Kelas X IPA 1</td><td>1</td></tr>
+  <tr><td>2</td><td>XIPA2</td><td>Kelas X IPA 2</td><td>2</td></tr>
+  <tr><td>3</td><td>XIPS1</td><td>Kelas X IPS 1</td><td>3</td></tr>
+  <tr><td>4</td><td>XIIPA1</td><td>Kelas XI IPA 1</td><td>4</td></tr>
+  <tr><td>5</td><td>XIIPS1</td><td>Kelas XI IPS 1</td><td>5</td></tr>
+</table>
+<br>
+
+<h4>Tabel Nilai</h4>
+<table>
+  <tr>
+    <th>id_nilai (PK)</th>
+    <th>nis (FK)</th>
+    <th>id_kelas (FK)</th>
+    <th>nilai</th>
+  </tr>
+  <tr><td>1</td><td>S001</td><td>1</td><td>88.50</td></tr>
+  <tr><td>2</td><td>S002</td><td>2</td><td>91.00</td></tr>
+  <tr><td>3</td><td>S003</td><td>3</td><td>76.25</td></tr>
+  <tr><td>4</td><td>S004</td><td>4</td><td>82.75</td></tr>
+  <tr><td>5</td><td>S005</td><td>5</td><td>90.00</td></tr>
+</table>
+
+  <div class="example-box">
+    <h2>4. Sistem Rumah Sakit</h2>
+    <p><strong>Deskripsi:</strong><br>
+     Rumah sakit memiliki dokter, pasien, dan catatan pemeriksaan
+    </p>
+
+    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>Primary Key:</strong><br>
+      Dokter: id_dokter, Pasien: id_pasien, RekamMedis: id_rekam
+    </p>
+    <p><strong>Foreign Key:</strong><br>
+      RekamMedis: id_dokter ΓåÆ Dokter: id_dokter<br>
+      RekamMedis: id_pasien ΓåÆ Pasien: id_pasien
+    </p>
+    <p><strong>Candidate Key:</strong><br>
+      Dokter: no_str, Pasien: no_ktp, RekamMedis: no_rm
+    </p>
+    <p><strong>SQL Code:</strong></p>
+    <img src="images/sistem rumah sakit.png"
+     alt="SQL Code Sistem rumah sakit"
+     style="width:50%;">
+  </div>
+
+  <h4>Tabel Dokter</h4>
+<table>
+  <tr>
+    <th>id_dokter (PK)</th>
+    <th>no_str (UNIQUE)</th>
+    <th>nama_dokter</th>
+  </tr>
+  <tr><td>1</td><td>STR001</td><td>dr. Budi Santoso</td></tr>
+  <tr><td>2</td><td>STR002</td><td>dr. Maya Dewi</td></tr>
+  <tr><td>3</td><td>STR003</td><td>dr. Toni Prasetyo</td></tr>
+  <tr><td>4</td><td>STR004</td><td>dr. Rina Ayu</td></tr>
+  <tr><td>5</td><td>STR005</td><td>dr. Yoga Pratama</td></tr>
+</table>
+<br>
+
+<h4>Tabel Pasien</h4>
+<table>
+  <tr>
+    <th>id_pasien (PK)</th>
+    <th>no_ktp (UNIQUE)</th>
+    <th>nama_pasien</th>
+  </tr>
+  <tr><td>1</td><td>3275010101</td><td>Andi Saputra</td></tr>
+  <tr><td>2</td><td>3275010102</td><td>Siti Nurhaliza</td></tr>
+  <tr><td>3</td><td>3275010103</td><td>Rina Marlina</td></tr>
+  <tr><td>4</td><td>3275010104</td><td>Agus Setiawan</td></tr>
+  <tr><td>5</td><td>3275010105</td><td>Lina Kartika</td></tr>
+</table>
+<br>
+
+<h4>Tabel RekamMedis</h4>
+<table>
+  <tr>
+    <th>id_rekam (PK)</th>
+    <th>no_rm (UNIQUE)</th>
+    <th>tanggal</th>
+    <th>id_dokter (FK)</th>
+    <th>id_pasien (FK)</th>
+  </tr>
+  <tr><td>1</td><td>RM001</td><td>2025-10-01</td><td>1</td><td>1</td></tr>
+  <tr><td>2</td><td>RM002</td><td>2025-10-02</td><td>2</td><td>3</td></tr>
+  <tr><td>3</td><td>RM003</td><td>2025-10-03</td><td>3</td><td>5</td></tr>
+  <tr><td>4</td><td>RM004</td><td>2025-10-04</td><td>4</td><td>2</td></tr>
+  <tr><td>5</td><td>RM005</td><td>2025-10-05</td><td>5</td><td>4</td></tr>
+</table>
+
+  <div class="example-box">
+    <h2>5. Sistem Perpustakaan</h2>
+    <p><strong>Deskripsi:</strong><br>
+      Perpustakaan memiliki koleksi buku, anggota, dan data peminjaman buku.
+    </p>
+
+    <p><strong>≡ƒöæ Keys:</strong></p>
+    <p><strong>Primary Key:</strong><br>
+      Buku: id_buku, Anggota: id_anggota, Peminjaman: id_pinjam
+    </p>
+    <p><strong>Foreign Key:</strong><br>
+      Peminjaman: id_buku ΓåÆ Buku: id_buku<br>
+      Peminjaman: id_anggota ΓåÆ Anggota: id_anggota
+    </p>
+    <p><strong>Candidate Key:</strong><br>
+      Buku: isbn, Anggota: email, Peminjaman: kode_pinjam
+    </p>
+    <p><strong>SQL Code:</strong></p>
+    <img src="images/sistem perpustakaan.png"
+     alt="SQL Code Sistem perpustakaan"
+     style="width:50%;">
+  </div>
+
+  <h4>Tabel Buku</h4>
+<table>
+  <tr>
+    <th>id_buku (PK)</th>
+    <th>isbn (UNIQUE)</th>
+    <th>judul</th>
+    <th>penulis</th>
+  </tr>
+  <tr><td>1</td><td>9786020311234</td><td>Laskar Pelangi</td><td>Andrea Hirata</td></tr>
+  <tr><td>2</td><td>9786020325559</td><td>Bumi Manusia</td><td>Pramoedya Ananta Toer</td></tr>
+  <tr><td>3</td><td>9786020339990</td><td>Negeri 5 Menara</td><td>Ahmad Fuadi</td></tr>
+  <tr><td>4</td><td>9786020348879</td><td>Dilan 1990</td><td>Pidi Baiq</td></tr>
+  <tr><td>5</td><td>9786020356781</td><td>Perahu Kertas</td><td>Dee Lestari</td></tr>
+</table>
+<br>
+
+<h4>Tabel Anggota</h4>
+<table>
+  <tr>
+    <th>id_anggota (PK)</th>
+    <th>email (UNIQUE)</th>
+    <th>nama_anggota</th>
+  </tr>
+  <tr><td>1</td><td>ali@gmail.com</td><td>Ali Rahman</td></tr>
+  <tr><td>2</td><td>dina@yahoo.com</td><td>Dina Sari</td></tr>
+  <tr><td>3</td><td>fajar@gmail.com</td><td>Fajar Nugroho</td></tr>
+  <tr><td>4</td><td>yani@yahoo.com</td><td>Yani Rahmawati</td></tr>
+  <tr><td>5</td><td>rudi@gmail.com</td><td>Rudi Hartono</td></tr>
+</table>
+<br>
+
+<h4>Tabel Peminjaman</h4>
+<table>
+  <tr>
+    <th>id_pinjam (PK)</th>
+    <th>kode_pinjam (UNIQUE)</th>
+    <th>tanggal_pinjam</th>
+    <th>id_buku (FK)</th>
+    <th>id_anggota (FK)</th>
+  </tr>
+  <tr><td>1</td><td>PMJ001</td><td>2025-10-01</td><td>1</td><td>1</td></tr>
+  <tr><td>2</td><td>PMJ002</td><td>2025-10-02</td><td>3</td><td>2</td></tr>
+  <tr><td>3</td><td>PMJ003</td><td>2025-10-03</td><td>5</td><td>3</td></tr>
+  <tr><td>4</td><td>PMJ004</td><td>2025-10-04</td><td>2</td><td>4</td></tr>
+  <tr><td>5</td><td>PMJ005</td><td>2025-10-05</td><td>4</td><td>5</td></tr>
+</table>
+
+<h2>Kesimpulan</h2>
+<p>
+    Primary key adalah kunci utama dalam sebuah tabel yang berfungsi sebagai identitas unik setiap record, tidak boleh null, dan hanya ada satu per tabel. Candidate key adalah semua atribut yang memiliki sifat unik dan bisa menjadi primary key; artinya, primary key dipilih dari salah satu candidate key yang tersedia. 
+    Sementara itu, foreign key adalah atribut dalam satu tabel yang digunakan untuk menghubungkan tabel tersebut dengan tabel lain melalui acuan ke primary key, sehingga menjaga keterkaitan dan integritas data antar tabel.
+</p>
+  </div>
+</body>
+</html>
