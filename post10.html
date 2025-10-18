@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post 10: Apa itu normalisasi pada ERD</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #2b2b2b;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    ul, ol {
+      margin: 10px 0 18px 20px;
+      font-size: 16px;
+    }
+
+    code {
+      background: #f0f0f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    .example {
+      background: #fbfbff;
+      border-left: 4px solid #EEAD92;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .conclusion {
+      background: linear-gradient(90deg,#EAF6FF,#FFF6F0);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-top: 18px;
+      font-weight: 600;
+    }
+
+    .references {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 10: Apa itu normalisasi pada ERD</h1>
+    <div class="date">Dipublikasikan: 16 Oktober 2025</div>
+
+    <!-- Gambar: gunakan file lokal jika tersedia, fallback ke URL jika tidak -->
+    <img
+      src="images/Screenshot 2025-10-18 162356.png"
+      alt="Ilustrasi Basis Data / ERD"
+      class="post-img"
+      onerror="this.onerror=null; this.src='https://landing.moqups.com/img/_optimized/templates/diagrams/erd/database-diagram-w1366.avif';"
+    >
+
+    <p>
+      <strong>Normalisasi</strong> pada ERD (Entity-Relationship Diagram) adalah proses
+      mengorganisir struktur basis data (tabel dan hubungan antar tabel) untuk mengurangi
+      redundansi data dan meningkatkan integritas data. Tujuan utamanya adalah membuat desain
+      basis data yang efisien, mudah dipelihara, dan konsisten ketika data dimasukkan, diubah,
+      atau dihapus.
+    </p>
+
+    <h2>Kenapa normalisasi penting?</h2>
+    <ul>
+      <li>Menghindari <em>duplicate data</em> (duplikasi) yang membuang ruang penyimpanan.</li>
+      <li>Mencegah anomali saat operasi <em>insert</em>, <em>update</em>, dan <em>delete</em>.</li>
+      <li>Meningkatkan konsistensi dan akurasi data.</li>
+      <li>Membuat relasi antar-entitas jelas sehingga query lebih mudah dioptimalkan.</li>
+    </ul>
+
+    <h2>Tingkat normalisasi yang umum</h2>
+
+    <h3>1. Bentuk Normal Pertama (1NF)</h3>
+    <p>
+      Syarat 1NF: setiap atribut di tabel harus bernilai atomik (tidak ada kolom yang menyimpan daftar nilai).
+      Contoh pelanggaran 1NF: kolom <code>telepon</code> yang menyimpan "0811, 0822" pada satu baris.
+    </p>
+
+    <h3>2. Bentuk Normal Kedua (2NF)</h3>
+    <p>
+      2NF berarti tabel sudah 1NF dan setiap atribut non-kunci bergantung sepenuhnya pada seluruh
+      primary key. Ini khusus relevan untuk primary key komposit. Jika ada ketergantungan parsial,
+      pecah tabel menjadi beberapa tabel.
+    </p>
+
+    <h3>3. Bentuk Normal Ketiga (3NF)</h3>
+    <p>
+      3NF berarti sudah 2NF dan tidak ada ketergantungan transitif antara atribut non-kunci.
+      Artinya atribut non-kunci tidak bergantung pada atribut non-kunci lain.
+    </p>
+
+    <h3>Boyce-Codd Normal Form (BCNF)</h3>
+    <p>
+      BCNF adalah versi lebih ketat dari 3NF yang menangani beberapa kasus khusus. Biasanya
+      diterapkan jika ada dependensi fungsional yang tidak ditangani oleh 3NF.
+    </p>
+
+    <h2>Contoh sederhana: sebelum & sesudah normalisasi</h2>
+
+    <div class="example">
+      <strong>Sebelum (tabel tunggal):</strong><br>
+      <code>Order(order_id, customer_name, customer_address, product_id, product_name, qty)</code>
+    </div>
+
+    <div class="example">
+      <strong>Setelah normalisasi (pisah jadi beberapa tabel):</strong>
+      <ol>
+        <li><code>Customer(customer_id, name, address)</code></li>
+        <li><code>Product(product_id, name)</code></li>
+        <li><code>Order(order_id, customer_id, order_date)</code></li>
+        <li><code>OrderItem(order_id, product_id, qty)</code></li>
+      </ol>
+      Pisah seperti ini menghilangkan duplikasi nama produk dan alamat customer ketika terjadi banyak order.
+    </div>
+
+    <h2>Langkah praktis melakukan normalisasi pada ERD</h2>
+    <ol>
+      <li>Identifikasi entitas utama dan atributnya.</li>
+      <li>Tentukan primary key untuk setiap entitas.</li>
+      <li>Pastikan atribut bersifat atomik (1NF).</li>
+      <li>Periksa ketergantungan atribut ke primary key (2NF) dan hilangkan ketergantungan parsial.</li>
+      <li>Periksa ketergantungan transitif antar atribut (3NF) dan pindahkan atribut yang tidak langsung bergantung ke tabel lain.</li>
+      <li>Evaluasi apakah BCNF perlu diterapkan untuk dependensi fungsional khusus.</li>
+    </ol>
+
+    <h2>Catatan praktik & trade-off</h2>
+    <p>
+      Normalisasi mengurangi redundansi tetapi kadang memerlukan <em>join</em> lebih banyak saat
+      mengambil data, yang dapat memengaruhi performa pada query yang kompleks. Untuk kasus sistem
+      pembacaan intensif, beberapa desainer memilih denormalisasi terkontrol (menyimpan salinan data)
+      untuk menaikkan kecepatan baca, asalkan ada mekanisme menjaga konsistensi.
+    </p>
+
+    <h2>Kesalahan umum yang perlu dihindari</h2>
+    <ul>
+      <li>Terlalu cepat melakukan denormalisasi tanpa alasan kuat (menempatkan duplikasi data tanpa strategi update).</li>
+      <li>Tidak mendefinisikan primary key dengan benar—ini menyebabkan kesulitan menghapus/merujuk baris.</li>
+      <li>Mengabaikan tipe data dan pembatasan (constraints) seperti <code>UNIQUE</code>, <code>NOT NULL</code>, dan <code>FOREIGN KEY</code>.</li>
+    </ul>
+
+    <div class="conclusion">
+      <p>
+        <strong>Kesimpulan:</strong> Normalisasi pada ERD adalah proses desain penting untuk
+        menjaga struktur basis data yang bersih, konsisten, dan bebas dari duplikasi. Terapkan
+        sampai tingkat yang logis (biasanya sampai 3NF atau BCNF bila perlu), lalu pertimbangkan
+        performa dan kebutuhan aplikasi sebelum melakukan denormalisasi.
+      </p>
+    </div>
+
+    <div class="references">
+      Referensi & bahan bacaan singkat: buku basis data standar tentang normalisasi, dokumentasi SQL, dan contoh ERD praktis.
+    </div>
+
+  </div>
+</body>
+</html>
