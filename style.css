@@ -1,6 +1,3 @@
-/* ====================== */ 
-/* RESET DAN DASAR */
-/* ====================== */
 * {
   margin: 0;
   padding: 0;
@@ -70,9 +67,6 @@ section {
   min-height: 100vh;
 }
 
-/* ====================== */
-/* HOME SECTION */
-/* ====================== */
 #home {
   color: white;
   display: flex;
@@ -106,9 +100,6 @@ section {
   font-size: 18px;
 }
 
-/* ====================== */
-/* HERO BUTTON */
-/* ====================== */
 .hero-btn {
   display: inline-block;
   margin-top: 25px;
@@ -129,9 +120,6 @@ section {
   box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
 }
 
-/* ====================== */
-/* POSTS (UPDATE) */
-/* ====================== */
 #posts {
   background: #fff;
   padding: 100px 50px;
@@ -172,7 +160,7 @@ section {
 .card img {
   width: 200px;
   height: 140px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
   margin-right: 20px;
   flex-shrink: 0;
@@ -197,10 +185,9 @@ section {
 }
 
 .post-badge {
-  display: none; /* disembunyikan karena tidak cocok untuk layout horizontal */
+  display: none;
 }
 
-/* Responsif untuk HP */
 @media (max-width: 768px) {
   .card {
     flex-direction: column;
@@ -219,9 +206,6 @@ section {
   }
 }
 
-/* ====================== */
-/* CONTACT SECTION */
-/* ====================== */
 #contact {
   background: #0a0a0a;
   display: flex;
@@ -301,9 +285,6 @@ footer {
   color: #aaa;
 }
 
-/* ====================== */
-/* BIODATA */
-/* ====================== */
 .biodata {
   text-align: center;
   margin-top: 100px;
@@ -321,7 +302,6 @@ footer {
   margin-bottom: 15px;
 }
 
-/* Nama */
 .biodata h3 span {
   background: linear-gradient(90deg, #166CF5, #A855F7, #4BB6B6);
   -webkit-background-clip: text;
@@ -332,7 +312,6 @@ footer {
   animation: shine 4s linear infinite;
 }
 
-/* Info tambahan */
 .biodata p {
   background: linear-gradient(90deg, #166CF5, #A855F7, #4BB6B6);
   -webkit-background-clip: text;
@@ -345,7 +324,6 @@ footer {
   margin-top: 6px;
 }
 
-/* Animasi */
 @keyframes shine {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -356,9 +334,6 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ====================== */
-/* BIODATA HORIZONTAL */
-/* ====================== */
 .biodata-wrapper {
   display: flex;
   align-items: center;
@@ -393,7 +368,6 @@ footer {
   line-height: 1.6;
 }
 
-/* Efek teks gradasi */
 .gradient-text {
   background: linear-gradient(90deg, #166CF5, #A855F7, #4BB6B6);
   -webkit-background-clip: text;
@@ -402,7 +376,6 @@ footer {
   animation: shine 4s linear infinite;
 }
 
-/* Responsif untuk HP */
 @media (max-width: 768px) {
   .biodata-wrapper {
     flex-direction: column;
