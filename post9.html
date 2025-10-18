@@ -1,0 +1,252 @@
+<!DOCTYPE html> 
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post 9: ERD tentang Intersection</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .post-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #4a148c;
+      font-size: 22px;
+      margin-top: 30px;
+      border-left: 6px solid #EEAD92;
+      padding-left: 10px;
+    }
+
+    p {
+      margin: 15px 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .example {
+      margin-bottom: 40px;
+    }
+
+    img.case {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+    }
+
+    .section {
+      background: #faf7ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .section h3 {
+      color: #5a189a;
+      margin-top: 0;
+    }
+
+    .correct {
+      background: #e0f7e9;
+      border-left: 6px solid #00c853;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .wrong {
+      background: #ffe6e6;
+      border-left: 6px solid #e53935;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .summary {
+      background: linear-gradient(135deg, #EEAD92, #6018DC);
+      color: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .summary h3 {
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 9: ERD tentang Intersection</h1>
+    <div class="date">Dipublikasikan: 16 Oktober 2025</div>
+
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/6oTurM7gESE" 
+        title="Penjelasan ERD Intersection" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <p>
+      Dalam Entity Relationship Diagram (ERD), <strong>Intersection</strong> atau <em>Associative Entity</em> adalah tabel penghubung yang digunakan
+      untuk mewakili hubungan <strong>many-to-many (M:N)</strong> antara dua entitas. Karena dalam basis data relasional tidak dapat langsung
+      merepresentasikan hubungan M:N, maka dibuatlah entitas tambahan yang berisi <em>foreign key</em> dari kedua tabel utama.
+    </p>
+
+    <p>
+      Entitas intersection ini juga bisa memiliki atribut tambahan yang menggambarkan hubungan tersebut, seperti tanggal, status,
+      jumlah, atau keterangan lain. Berikut adalah 5 contoh kasus penerapan intersection dalam ERD:
+    </p>
+
+    <div class="example">
+      <h2>1. Kasus Dokter - Pasien</h2>
+      <img src="images/Screenshot 2025-10-18 154019.png" alt="ERD Dokter Pasien" class="case">
+      <p>
+        Dalam sistem rumah sakit, seorang <strong>dokter</strong> dapat memeriksa banyak <strong>pasien</strong>, dan seorang <strong>pasien</strong> juga bisa diperiksa oleh banyak <strong>dokter</strong>.
+        Oleh karena itu, dibentuk tabel <strong>pemeriksaan</strong> sebagai entitas penghubung (intersection) yang menyimpan
+        pasangan dokter dan pasien, serta atribut tambahan seperti <em>tgl_periksa</em>.
+      </p>
+    </div>
+
+    <div class="example">
+      <h2>2. Kasus Karyawan - Proyek</h2>
+      <img src="images/Screenshot 2025-10-18 154115.png" alt="ERD Karyawan Proyek" class="case">
+      <p>
+        Dalam dunia kerja, satu <strong>karyawan</strong> dapat mengerjakan banyak <strong>proyek</strong>, dan satu <strong>proyek</strong> bisa
+        dikerjakan oleh beberapa <strong>karyawan</strong>. Entitas <strong>penugasan</strong> menjadi tabel penghubung yang berisi
+        <em>id_karyawan</em> dan <em>id_proyek</em>, serta atribut tambahan <em>jam_kerja</em> untuk mencatat lamanya waktu kerja pada proyek tersebut.
+      </p>
+    </div>
+
+    <div class="example">
+      <h2>3. Kasus KRS (Mahasiswa - Mata Kuliah)</h2>
+      <img src="images/Screenshot 2025-10-18 154214.png" alt="ERD KRS Mahasiswa Mata Kuliah" class="case">
+      <p>
+        Dalam sistem akademik, seorang <strong>mahasiswa</strong> dapat mengambil banyak <strong>mata kuliah</strong>, dan satu
+        <strong>mata kuliah</strong> bisa diambil oleh banyak mahasiswa. Hubungan ini direpresentasikan oleh tabel <strong>KRS</strong>
+        yang menghubungkan kedua entitas dan memiliki atribut tambahan seperti <em>semester</em>.
+      </p>
+    </div>
+
+    <div class="example">
+      <h2>4. Kasus Pengunjung - Event</h2>
+      <img src="images/Screenshot 2025-10-18 154304.png" alt="ERD Pengunjung Event" class="case">
+      <p>
+        Dalam sistem event, satu <strong>pengunjung</strong> bisa mengikuti banyak <strong>event</strong>, dan satu event bisa dihadiri oleh banyak pengunjung.
+        Untuk itu dibuat tabel <strong>registrasievent</strong> sebagai entitas penghubung yang berisi <em>id_pengunjung</em>,
+        <em>id_event</em>, serta atribut tambahan seperti <em>status</em> kehadiran.
+      </p>
+    </div>
+
+    <div class="example">
+      <h2>5. Kasus Produk - Pesanan</h2>
+      <img src="images/Screenshot 2025-10-18 154349.png" alt="ERD Produk Pesanan" class="case">
+      <p>
+        Dalam sistem toko online, satu <strong>pesanan</strong> dapat berisi banyak <strong>produk</strong>, dan satu produk
+        bisa muncul di banyak pesanan. Oleh karena itu, dibuat tabel <strong>detailpesanan</strong> sebagai intersection yang
+        menyimpan <em>id_pesanan</em> dan <em>id_produk</em>, serta atribut tambahan seperti <em>qty</em> untuk jumlah produk yang dipesan.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Cara Penggunaan Intersection yang Benar dan Salah</h3>
+
+      <div class="wrong">
+        <strong>❌ Salah:</strong> Menghubungkan tabel <em>Produk</em> langsung dengan <em>Pesanan</em> menggunakan relasi many-to-many tanpa tabel perantara.
+        <br><em>Akibatnya:</em> Database menjadi sulit diatur, data duplikat mudah terjadi, dan sulit untuk menambah atribut tambahan seperti jumlah produk.
+      </div>
+
+      <div class="correct">
+        <strong>✅ Benar:</strong> Membuat tabel <em>DetailPesanan</em> sebagai intersection yang menyimpan <em>id_produk</em>, <em>id_pesanan</em>, dan <em>qty</em>.
+        <br><em>Keuntungan:</em> Struktur data lebih rapi, efisien, serta mudah dikembangkan.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Mengapa Harus Membuat Intersection?</h3>
+      <p>
+        Karena database relasional tidak bisa langsung menghubungkan dua entitas dengan relasi <strong>many-to-many</strong>.
+        Intersection dibutuhkan untuk:
+      </p>
+      <ul>
+        <li>🔗 Menyederhanakan hubungan kompleks antara dua entitas.</li>
+        <li>💾 Menyimpan atribut tambahan yang menggambarkan relasi.</li>
+        <li>🧩 Memastikan integritas dan konsistensi data antar tabel.</li>
+        <li>🚀 Memudahkan pengembangan sistem di masa depan.</li>
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h3>Kesimpulan</h3>
+      <p>
+        Intersection adalah “jembatan” penting dalam desain ERD yang membuat hubungan M:N dapat diterjemahkan ke dunia nyata basis data.  
+        Dengan intersection, struktur data menjadi lebih jelas, rapi, dan mudah diolah.  
+        Jadi, jangan ragu untuk membuat intersection ketika dua entitas memiliki hubungan banyak ke banyak! 💡
+      </p>
+    </div>
+  </div>
+</body>
+</html>
