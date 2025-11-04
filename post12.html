@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post 12: Apa itu SQL, DDL, DML, DCL, dan TCL?</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 26px;
+      color: #6018DC;
+      border-bottom: 3px solid #EEAD92;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #2b2b2b;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+    ul, ol {
+      margin: 10px 0 18px 20px;
+      font-size: 16px;
+    }
+    code {
+      background: #f0f0f5;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    p {
+      margin: 14px 0;
+      text-align: justify;
+      font-size: 17px;
+    }
+    .example {
+      background: #fbfbff;
+      border-left: 4px solid #EEAD92;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 15px;
+    }
+    .conclusion {
+      background: linear-gradient(90deg,#EAF6FF,#FFF6F0);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-top: 18px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 12: Apa itu SQL, DDL, DML, DCL, dan TCL?</h1>
+    <div class="date">Dipublikasikan: 1 November 2025</div>
+
+    <p>
+      Dalam dunia basis data, kita mengenal istilah <strong>SQL</strong> sebagai bahasa standar untuk mengelola dan memanipulasi data di sistem manajemen basis data relasional (RDBMS).
+      SQL dibagi menjadi beberapa bagian utama berdasarkan fungsinya, yaitu DDL, DML, DCL, dan TCL.
+    </p>
+
+    <h2>1. SQL (Structured Query Language)</h2>
+    <p>
+      SQL adalah bahasa untuk membuat, mengubah, dan mengelola basis data. 
+      Dengan SQL, kita bisa membuat tabel, mengisi data, menampilkan, memperbarui, atau menghapus data dengan perintah yang sederhana.
+    </p>
+
+    <h2>2. DDL (Data Definition Language)</h2>
+    <p>
+      Digunakan untuk mendefinisikan struktur database seperti tabel, kolom, dan relasi.
+      <br><strong>Contoh perintah:</strong> <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>.
+    </p>
+
+    <h2>3. DML (Data Manipulation Language)</h2>
+    <p>
+      Digunakan untuk memanipulasi data di dalam tabel.
+      <br><strong>Contoh perintah:</strong> <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>.
+    </p>
+
+    <h2>4. DCL (Data Control Language)</h2>
+    <p>
+      Digunakan untuk mengatur hak akses pengguna terhadap data.
+      <br><strong>Contoh perintah:</strong> <code>GRANT</code>, <code>REVOKE</code>.
+    </p>
+
+    <h2>5. TCL (Transaction Control Language)</h2>
+    <p>
+      Berfungsi untuk mengatur transaksi dalam database, memastikan data tetap konsisten.
+      <br><strong>Contoh perintah:</strong> <code>COMMIT</code>, <code>ROLLBACK</code>, <code>SAVEPOINT</code>.
+    </p>
+
+    <div class="example">
+      <strong>Contoh sederhana:</strong><br>
+      <code>
+        BEGIN;<br>
+        INSERT INTO pelanggan VALUES (1, 'Andi', 'Bandung');<br>
+        COMMIT;
+      </code>
+    </div>
+
+    <div class="conclusion">
+      <p>
+        <strong>Kesimpulan:</strong> SQL adalah bahasa utama untuk berinteraksi dengan basis data.
+        DDL mendefinisikan struktur, DML mengelola data, DCL mengatur hak akses, dan TCL memastikan transaksi berjalan konsisten.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
