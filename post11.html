@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post 11: ERD tentang Penerapan Denormalisasi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fc;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 850px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 35px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 28px;
+      color: #5b21b6;
+      border-bottom: 3px solid #f59e0b;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    .date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 25px;
+    }
+    iframe {
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border: none;
+    }
+    h2 {
+      color: #222;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 22px;
+      border-left: 5px solid #f59e0b;
+      padding-left: 10px;
+    }
+    p {
+      margin: 14px 0;
+      text-align: justify;
+      font-size: 17px;
+    }
+    ul {
+      margin: 10px 0 18px 20px;
+      font-size: 16px;
+    }
+    pre {
+      background: #f9fafb;
+      border-left: 5px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin: 14px 0;
+      font-size: 15px;
+      overflow-x: auto;
+    }
+    .highlight {
+      background: #fef9c3;
+      padding: 4px 6px;
+      border-radius: 5px;
+    }
+    .example {
+      background: #faf5ff;
+      border-left: 5px solid #a855f7;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+    .conclusion {
+      background: linear-gradient(90deg,#e0f2fe,#fef3c7);
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin-top: 30px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .post-img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Post 11: ERD tentang Penerapan Denormalisasi</h1>
+    <div class="date">Dipublikasikan: 1 November 2025</div>
+
+    <!-- Video YouTube -->
+    <iframe 
+      src="https://www.youtube.com/embed/VMWH54hOlD8" 
+      title="ERD Denormalisasi"
+      allowfullscreen>
+    </iframe>
+
+    <h2>Apa itu ERD Denormalisasi?</h2>
+    <p>
+      <strong>Denormalisasi</strong> dalam konteks <em>Entity Relationship Diagram (ERD)</em> 
+      adalah proses menggabungkan tabel-tabel yang sebelumnya sudah dinormalisasi 
+      untuk mempercepat akses data. 
+      Jika <span class="highlight">normalisasi</span> berfokus menghindari duplikasi data, 
+      maka <span class="highlight">denormalisasi</span> justru mengizinkan pengulangan data secara terkontrol 
+      demi kinerja query yang lebih cepat.
+    </p>
+
+    <h2>Fungsi Denormalisasi</h2>
+    <ul>
+      <li>Mempercepat proses <em>query</em> dengan mengurangi jumlah <code>JOIN</code>.</li>
+      <li>Memudahkan pembuatan laporan dengan satu tabel besar.</li>
+      <li>Digunakan dalam sistem yang sering melakukan pembacaan data (read-heavy).</li>
+    </ul>
+
+    <h2>Kelebihan dan Kekurangan</h2>
+    <div class="example">
+      <strong>✨ Kelebihan:</strong>
+      <ul>
+        <li>Query lebih cepat karena data sudah tersedia dalam satu tabel.</li>
+        <li>Mengurangi beban CPU akibat operasi JOIN yang berat.</li>
+      </ul>
+      <strong>⚠️ Kekurangan:</strong>
+      <ul>
+        <li>Terjadi duplikasi data (data pelanggan bisa berulang).</li>
+        <li>Perubahan data di satu tabel bisa membuat data lain tidak konsisten.</li>
+      </ul>
+    </div>
+
+    <h2>Langkah-langkah Penerapan</h2>
+    <ol>
+      <li><strong>Buat Database Baru</strong><br>
+        Beri nama misalnya: <code>db_penjualan</code>
+      </li>
+
+      <li><strong>Buat Tabel Versi Normalisasi</strong></li>
+    </ol>
+
+    <h3>🧱 Tabel pelanggan</h3>
+    <pre><code>CREATE TABLE pelanggan (
+  id_pelanggan INT AUTO_INCREMENT PRIMARY KEY,
+  nama_pelanggan VARCHAR(100),
+  alamat VARCHAR(200)
+);</code></pre>
+
+    <h3>🧾 Tabel transaksi</h3>
+    <pre><code>CREATE TABLE transaksi (
+  id_transaksi INT AUTO_INCREMENT PRIMARY KEY,
+  id_pelanggan INT,
+  tanggal DATE,
+  total DECIMAL(10,2),
+  FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id_pelanggan)
+);</code></pre>
+
+    <div class="example">
+      <strong>Penjelasan:</strong>  
+      Versi ini masih <em>ter-normalisasi</em> (3NF).  
+      Data pelanggan disimpan di tabel terpisah agar tidak ada duplikasi.
+    </div>
+
+    <h2>Menampilkan Masalahnya</h2>
+    <p>Untuk menampilkan nama pelanggan dari tabel transaksi, kita butuh query seperti ini:</p>
+    <pre><code>SELECT t.id_transaksi, p.nama_pelanggan, t.total
+FROM transaksi t
+JOIN pelanggan p ON t.id_pelanggan = p.id_pelanggan;</code></pre>
+    <p>
+      Query di atas menggunakan <code>JOIN</code> antar tabel. 
+      Jika datanya besar, maka performanya akan menurun.
+    </p>
+
+    <h2>Buat Versi Denormalisasi</h2>
+    <pre><code>CREATE TABLE transaksi_deno (
+  id_transaksi INT AUTO_INCREMENT PRIMARY KEY,
+  nama_pelanggan VARCHAR(100),
+  alamat_pelanggan VARCHAR(200),
+  tanggal DATE,
+  total DECIMAL(10,2)
+);</code></pre>
+    <p>
+      Pada tabel ini, data pelanggan langsung disimpan dalam tabel transaksi. 
+      Tidak perlu relasi atau foreign key.
+    </p>
+
+    <h2>Masukkan Data Contoh</h2>
+    <pre><code>INSERT INTO pelanggan (nama_pelanggan, alamat) VALUES
+('Ardha', 'Karawang'),
+('Ardha', 'Karawang');
+
+INSERT INTO transaksi (id_pelanggan, tanggal, total) VALUES
+(1, '2025-10-01', 250000),
+(2, '2025-10-02', 150000);
+
+INSERT INTO transaksi_deno (nama_pelanggan, alamat_pelanggan, tanggal, total) VALUES
+('Ardha', 'Karawang', '2025-10-01', 250000),
+('Sandy', 'Karawang', '2025-10-02', 150000);</code></pre>
+
+    <h2>Setelah Semua Tabel Jadi → Buka Diagram</h2>
+    <p>
+      Klik database <strong>db_penjualan</strong> → tab <strong>Designer</strong> di phpMyAdmin.  
+      <code>pelanggan</code> dan <code>transaksi</code> akan otomatis terhubung garis relasi (FK),  
+      sedangkan <code>transaksi_deno</code> berdiri sendiri karena tanpa relasi.
+    </p>
+
+    <div class="conclusion">
+      <p>
+        <strong>Kesimpulan:</strong>  
+        Denormalisasi membantu meningkatkan kecepatan akses data dengan mengorbankan efisiensi penyimpanan.  
+        Teknik ini efektif untuk sistem laporan besar, tetapi harus digunakan secara hati-hati agar data tetap konsisten.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
